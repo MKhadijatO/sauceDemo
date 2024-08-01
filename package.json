@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress-tags": "cypress-tags"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,7 @@
     "@badeball/cypress-cucumber-preprocessor": "^20.1.1",
     "@cypress/browserify-preprocessor": "^3.0.2",
     "cypress": "^13.13.1",
-    "cypress-iframe": "^1.0.1"
+    "cypress-iframe": "^1.0.1",
+    "cypress-tags": "^1.2.2"
   }
 }

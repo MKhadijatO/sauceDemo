@@ -1,7 +1,7 @@
 Feature: Testing Saucedemo E-commerce website
  Application regression
-
 @login
+
 Scenario: Validate login process with valid username and password
     Given I visit Saucedemo E-commerce website
     When I input valid username and valid password
@@ -55,7 +55,3 @@ Scenario: Validate login process with empty username and empty password
     When I leave the login fields empty
     Then I select Login button
     Then I validate unsuccessful login
-
-
-forgotpassword
-createaccount

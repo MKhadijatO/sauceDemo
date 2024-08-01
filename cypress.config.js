@@ -22,6 +22,7 @@ return config;
 module.exports = defineConfig({
 e2e: {
 setupNodeEvents,
+pageLoadTimeout: 10000, 
 specPattern: 'cypress/integration/BDD/*.feature',
 },
 });
