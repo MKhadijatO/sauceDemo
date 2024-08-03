@@ -17,53 +17,63 @@ beforeEach(function () {
   });
 });
 
-Given ("I visit Saucedemo E-commerce website", function () {
-    cy.visit("https://www.saucedemo.com/", {
-        onBeforeLoad(win) {
-          // Disable certain resources to speed up loading
-          win.fetch = null; // Disable fetch API
-        },
-        timeout: 30000, // 30 seconds
-      });
+Given("I visit Saucedemo E-commerce website", function () {
+  cy.visit("https://www.saucedemo.com/", {
+    onBeforeLoad(win) {
+      // Disable certain resources to speed up loading
+      win.fetch = null; // Disable fetch API
+    },
+    timeout: 30000, // 30 seconds
+  });
 });
 
-When ("I login into the website", function(){
-   
-    //Fill the correct login details and login
-    cy.get("#user-name").type(this.data.validUsermame);
-    cy.get("#password").type(this.data.validPassword);
-    cy.get("#login-button").click();
-    
-    //Assert the new page has loaded by checking for the page title: Product
-    cy.get(".title").should("contains.text", "Products");
+When("I login into the website", function () {
+  //Fill the correct login details and login
+  cy.get("#user-name").type(this.data.validUsermame);
+  cy.get("#password").type(this.data.validPassword);
+  cy.get("#login-button").click();
+
+  //Assert the new page has loaded by checking for the page title: Product
+  cy.get(".title").should("contains.text", "Products");
 });
 
-When ("I validate the entire Products Page", function(){
-    //Check the new page url
-    cy.url().should("include", "/inventory.html").scrollbottom();
-}); 
-
-When ("I click on the product name", function () {
-    cy.get("root").click();
+When("I validate the entire Products Page", function () {
+  //Check the new page url
+  cy.url().should("include", "/inventory.html").scrollbottom();
 });
 
-Then ("I validate the product opens and Add to cart button", function () {
-    //view selected product details
-    cy.get(".inventory_details_desc.large_size").should("be.visible", true);
-
-    //validate product image is visible
-    cy.get("img[alt='Test.allTheThings() T-Shirt (Red)']").should("be.visible", true);
-    // cy.get("img[class$='inventory_details_img']").should("be.visible", true);
-
-    //Add product to cart button
-    cy.get("#add-to-cart").click();
-
-    //validate product has been added to cart
-    cy.get("#remove").should("contains.text", "Remove");
-
-    //select Go Back button 
-    cy.get("#product-name").click();
-
+When("I click on the product name", function () {
+  cy.get("root").click();
 });
 
+Then("I validate the product opens and Add to cart button", function () {
+  //view selected product details
+  cy.get(".inventory_details_desc.large_size").should("be.visible", true);
 
+  //validate product image is visible
+  cy.get("img[alt='Test.allTheThings() T-Shirt (Red)']").should(
+    "be.visible",
+    true
+  );
+  // cy.get("img[class$='inventory_details_img']").should("be.visible", true);
+
+  //Add product to cart button
+  cy.get("#add-to-cart").click();
+});
+
+When("I click on the product image", function () {
+  cy.get("img[class='inventory_item_img']").should("be.visible").click();
+});
+
+Then("I click on the Remove button", function () {
+  //validate product has been added to cart
+  cy.get("#remove").should("contains.text", "Remove");
+});
+
+When("I select the Back to products button", function () {
+  //select Go Back button
+  cy.get("#back-to-products").click();
+
+  //Assert the the product list page opens
+  cy.get(".title").should("contains.text", "Products");
+});

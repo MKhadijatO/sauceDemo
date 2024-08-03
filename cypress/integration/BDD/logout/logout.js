@@ -17,36 +17,34 @@ beforeEach(function () {
   // });
 });
 
-Given ("I visit Saucedemo E-commerce website", function () {
-    cy.visit("https://www.saucedemo.com/", {
-        onBeforeLoad(win) {
-          // Disable certain resources to speed up loading
-          win.fetch = null; // Disable fetch API
-        },
-        timeout: 30000, // 30 seconds
-      });
+Given("I visit Saucedemo E-commerce website", function () {
+  cy.visit("https://www.saucedemo.com/", {
+    onBeforeLoad(win) {
+      // Disable certain resources to speed up loading
+      win.fetch = null; // Disable fetch API
+    },
+    timeout: 30000, // 30 seconds
+  });
 });
 
-When ("I login into the website", function(){
-   
-        //Fill the correct login details and login
-        cy.get("#user-name").type(this.data.validUsermame);
-        cy.get("#password").type(this.data.validPassword);
-        cy.get("#login-button").click();
-      
-        //Assert the new page has loaded by checking for the page title: Product
-        cy.get(".title").should("contains.text", "Products");
+When("I login into the website", function () {
+  //Fill the correct login details and login
+  cy.get("#user-name").type(this.data.validUsermame);
+  cy.get("#password").type(this.data.validPassword);
+  cy.get("#login-button").click();
+
+  //Assert the new page has loaded by checking for the page title: Product
+  cy.get(".title").should("contains.text", "Products");
 });
 
-When ("I click the Menu icon", function(){
-    cy.get("#react-burger-menu-btn").click();
+When("I click the Menu icon", function () {
+  cy.get("#react-burger-menu-btn").click();
 });
 
-
-Then ("I click on Logout", function (){
-    cy.get("#logout_sidebar_link").click();
+Then("I click on Logout", function () {
+  cy.get("#logout_sidebar_link").click();
 });
 
-Then ("I validate successful logout", function (){
-    cy.get("#login-button").should("contains.text", "Login");
+Then("I validate successful logout", function () {
+  cy.get("#login-button").should("contains.text", "Login");
 });

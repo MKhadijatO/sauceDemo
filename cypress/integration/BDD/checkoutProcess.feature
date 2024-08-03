@@ -16,7 +16,7 @@ Scenario: Validating Checkout Process
     Then I click on the Back Home button
 
 @checkoutProcess02
-Scenerao: Validating Checkout Process without filling the Your Information form 
+Scenario: Validating Checkout Process without filling the Your Information form 
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I add some items to cart
@@ -28,7 +28,7 @@ Scenerao: Validating Checkout Process without filling the Your Information form
     Then I validate unsuccessful submission
 
 @checkoutProcess03
-Scenerao: Validating Other Buttons on the Add to Cart Process
+Scenario: Validating Other Buttons on the Add to Cart Process
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I add some items to cart
