@@ -3,7 +3,7 @@ Feature: Testing Saucedemo E-commerce website
 
 
 @closebutton
-Scenerio: Validating the Close button feature
+Scenario: Validating the Close button feature
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I click the Menu icon
@@ -11,7 +11,7 @@ Scenerio: Validating the Close button feature
     Then I validate the menu list closes 
 
 @about
-Scenerio: Validating the About feature
+Scenario: Validating the About feature
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I click the Menu icon
@@ -19,7 +19,7 @@ Scenerio: Validating the About feature
     Then I validate the About 
 
 @allitems    
-Scenerio: Validating the All Items feature
+Scenario: Validating the All Items feature
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I click the Cart icon
@@ -28,7 +28,7 @@ Scenerio: Validating the All Items feature
     Then I validate the Products Page
 
 @cartIcon02
-Scenerio: Validating the about feature
+Scenario: Validating the about feature
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I click the Cart icon

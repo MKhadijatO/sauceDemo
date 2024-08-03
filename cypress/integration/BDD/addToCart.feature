@@ -3,7 +3,7 @@ Feature: Testing Saucedemo E-commerce website
 
 
 @cartIcon01
-Scenerio: Validating an empty cart
+Scenario: Validating an empty cart
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I click the Cart icon
@@ -11,7 +11,7 @@ Scenerio: Validating an empty cart
     Then I click on the Continue Shopping button
 
 @addToCart
-Scenerio: Validating Add to Cart Process
+Scenario: Validating Add to Cart Process
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I add some items to cart
@@ -19,7 +19,7 @@ Scenerio: Validating Add to Cart Process
     Then I click on the cart icon and view all items in the cart
 
 
-Scenerio: Validating the Removing items from Cart
+Scenario: Validating the Removing items from Cart
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I add some items to cart
@@ -28,7 +28,7 @@ Scenerio: Validating the Removing items from Cart
     Then I click on the remove button on some items
     Then I validate reduction of items on the cart
 
-Scenerio: Validating Going back to Product Page while on the Add to Cart Page
+Scenario: Validating Going back to Product Page while on the Add to Cart Page
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I add some items to cart

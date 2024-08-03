@@ -2,7 +2,7 @@ Feature: Testing Saucedemo E-commerce website
  Application regression
 
 @filterButton
-Scenerio: Validating Filter Button
+Scenario: Validating Filter Button
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I validate the entire Products Page

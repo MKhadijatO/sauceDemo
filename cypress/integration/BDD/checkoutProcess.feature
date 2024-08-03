@@ -2,7 +2,7 @@ Feature: Testing Saucedemo E-commerce website
  Application regression
 
 @checkoutProcess
-Scenerio: Validating Checkout Process
+Scenario: Validating Checkout Process
     Given I visit Saucedemo E-commerce website
     When I login into the website
     Then I validate the number of items on the cart icon
@@ -16,7 +16,7 @@ Scenerio: Validating Checkout Process
     Then I click on the Back Home button
 
 @checkoutProcess02
-Scenerio: Validating Checkout Process without filling the Your Information form 
+Scenerao: Validating Checkout Process without filling the Your Information form 
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I add some items to cart
@@ -28,7 +28,7 @@ Scenerio: Validating Checkout Process without filling the Your Information form
     Then I validate unsuccessful submission
 
 @checkoutProcess03
-Scenerio: Validating Other Buttons on the Add to Cart Process
+Scenerao: Validating Other Buttons on the Add to Cart Process
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I add some items to cart

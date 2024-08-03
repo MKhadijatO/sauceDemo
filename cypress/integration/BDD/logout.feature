@@ -2,8 +2,7 @@ Feature: Testing Saucedemo E-commerce website
  Application regression
 
 @logout
-
-Scenerio: Validating the Logout Process
+Scenario: Validating the Logout Process
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I click the Menu icon
