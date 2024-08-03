@@ -65,7 +65,7 @@ Then("I validate the product opens and Add to cart button", function () {
 
   //Add to cart button
   cy.get("button[class='btn_primary btn_inventory']").click();
-  // cy.get("button[class='btn_primary btn_inventory']", { force:true } ).click(); //can also be used
+  // cy.get("button[class='btn_primary btn_inventory']").click({ force:true }); //can also be used
 });
 
 
