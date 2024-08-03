@@ -8,23 +8,12 @@ beforeEach(function () {
     this.data = data;
   });
 
-  cy.wait(1000);
-
-  Cypress.on("uncaught:exception", (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false;
-  });
 });
 
+
+//@ViewProductDetails
 Given("I visit Saucedemo E-commerce website", function () {
-  cy.visit("https://www.saucedemo.com/", {
-    onBeforeLoad(win) {
-      // Disable certain resources to speed up loading
-      win.fetch = null; // Disable fetch API
-    },
-    timeout: 30000, // 30 seconds
-  });
+  cy.visit("https://www.saucedemo.com/v1");
 });
 
 When("I login into the website", function () {
@@ -34,46 +23,67 @@ When("I login into the website", function () {
   cy.get("#login-button").click();
 
   //Assert the new page has loaded by checking for the page title: Product
-  cy.get(".title").should("contains.text", "Products");
+  cy.get(".product_label").should("contains.text", "Products");
 });
 
 When("I validate the entire Products Page", function () {
   //Check the new page url
-  cy.url().should("include", "/inventory.html").scrollbottom();
+  cy.url().should("include", "/inventory.html")
+
+  //scrols the page to the bottom
+  cy.scrollTo("bottom");
+
+  //checks the if the header and footer component of the page loads
+  cy.get("#page_wrapper").should('be.visible');
+  cy.get("footer").should('be.visible');
+
+  //checks if product lists has image and other details
+  cy.get(".inventory_item_img").should("be.visible")
+  cy.get(".inventory_item_label").should('be.visible');
+  
 });
 
 When("I click on the product name", function () {
-  cy.get("root").click();
+  cy.get("#item_4_title_link").contains("Sauce Labs Backpack").click();
 });
 
 Then("I validate the product opens and Add to cart button", function () {
   //view selected product details
-  cy.get(".inventory_details_desc.large_size").should("be.visible", true);
+  cy.get(".inventory_details_container").should("be.visible", true);
 
   //validate product image is visible
-  cy.get("img[alt='Test.allTheThings() T-Shirt (Red)']").should(
+  cy.get(".inventory_details_img").should(
     "be.visible",
     true
   );
-  // cy.get("img[class$='inventory_details_img']").should("be.visible", true);
 
-  //Add product to cart button
-  cy.get("#add-to-cart").click();
+   //validate product price is visible
+   cy.get(".inventory_details_price").should(
+    "be.visible",
+    true
+  );
+
+  //Add to cart button
+  cy.get("button[class='btn_primary btn_inventory']").click();
+  // cy.get("button[class='btn_primary btn_inventory']", { force:true } ).click(); //can also be used
 });
 
+
+
+//@ViewProductDetailsw/img
 When("I click on the product image", function () {
-  cy.get("img[class='inventory_item_img']").should("be.visible").click();
+  cy.get("#item_4_img_link").should("be.visible").click();
 });
 
 Then("I click on the Remove button", function () {
   //validate product has been added to cart
-  cy.get("#remove").should("contains.text", "Remove");
+  cy.get("button[class='btn_secondary btn_inventory']").should("contains.text", "REMOVE");
 });
 
 When("I select the Back to products button", function () {
   //select Go Back button
-  cy.get("#back-to-products").click();
+  cy.get("button[class='inventory_details_back_button']").click({force:true});
 
   //Assert the the product list page opens
-  cy.get(".title").should("contains.text", "Products");
+  cy.get(".product_label").should("contains.text", "Products");
 });

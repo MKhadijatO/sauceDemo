@@ -8,24 +8,16 @@ beforeEach(function () {
     this.data = data;
   });
 
-  cy.wait(1000);
+  // cy.wait(1000);
 
-  Cypress.on("uncaught:exception", (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false;
-  });
+  cy.clearLocalStorage();
+  cy.clearCookies();
+
 });
 
 Given("I visit Saucedemo E-commerce website", function () {
   //Load the website
-  cy.visit("https://www.saucedemo.com/", {
-    onBeforeLoad(win) {
-      // Disable certain resources to speed up loading
-      win.fetch = null; // Disable fetch API
-    },
-    timeout: 30000, // 30 seconds
-  });
+  cy.visit("https://www.saucedemo.com/v1/");
 });
 
 When("I input valid username and valid password", function () {
@@ -40,10 +32,10 @@ Then("I select Login button", function () {
 
 Then("I validate successful login", function () {
   //Check the new page url
-//   cy.url().should("include", "/inventory.html");
+    // cy.url().should("include", "/inventory.html");
 
   //Assert the new page has loaded by checking for the page title: Product
-  cy.get(".title").should("contains.text", "Products");
+  cy.get(".product_label").should("contains.text", "Products");
 });
 
 //NEGATIVE SCENERIOS
@@ -75,7 +67,7 @@ When("I input invalid username and invalid password", function () {
 
 //@login4
 When("I input empty username and valid password", function () {
-  cy.get("#user-name").should('have.value', '');
+  cy.get("#user-name").should("have.value", "");
   cy.get("#password").type(this.data.validPassword);
 });
 
@@ -90,7 +82,7 @@ Then("I validate unsuccessful login with empty username", function () {
 //@login5
 When("I input valid username and empty password", function () {
   cy.get("#user-name").type(this.data.validUsermame);
-  cy.get("#password").should('have.value', '');
+  cy.get("#password").should("have.value", "");
 });
 
 Then("I validate unsuccessful login with empty password", function () {
@@ -103,20 +95,20 @@ Then("I validate unsuccessful login with empty password", function () {
 
 //@login6
 When("I input empty username and invalid password", function () {
-  cy.get("#user-name").should('have.value', '');
+  cy.get("#user-name").should("have.value", "");
   cy.get("#password").type(this.data.invalidPassword);
 });
 
 //@login7
 When("I input invalid username and empty password", function () {
   cy.get("#user-name").type(this.data.invalidUsermame);
-  cy.get("#password").should('have.value', '');
+  cy.get("#password").should("have.value", "");
 });
 
 //@login8
 When("I leave the login fields empty", function () {
-  cy.get("#user-name").should('have.value', '');
-  cy.get("#password").should('have.value', '');
+  cy.get("#user-name").should("have.value", "");
+  cy.get("#password").should("have.value", "");
 });
 
 Then("I validate unsuccessful login with empty credentials", function () {

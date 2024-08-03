@@ -9,7 +9,7 @@ Scenario: Validating Viewing product detail by clicking on the product name and 
     When I click on the product name
     Then I validate the product opens and Add to cart button
 
-
+@ViewProductDetailsw/img
 Scenario: Validating Viewing product detail by clicking on the product image and validate Add to cart button
     Given I visit Saucedemo E-commerce website
     When I login into the website
