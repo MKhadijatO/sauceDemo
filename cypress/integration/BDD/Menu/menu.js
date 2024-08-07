@@ -46,20 +46,27 @@ Then("I validate the menu list closes", function () {
 //@about
 Then("I click on About", function () {
   cy.get("#about_sidebar_link").click();
-  cy.url().should("eq", "https://saucelabs.com/");
+  
 });
 
-// Then("I validate the About menu", function () {
+Then("I validate the About menu", function () {
+    //opens the about page
+    cy.url().should("eq", "https://saucelabs.com/");
+  cy.scrollTo("bottom");
+  //intercept
+  cy.intercept("POST", "https://api.segment.io/v1/i").as("separatePost");
+  cy.wait("@separatePost").then((interception) => {
+    // Log the interception object for debugging
+    console.log(interception);
 
-//     //opens the about page
-//   cy.url().should("include", "https://saucelabs.com/");
-//   cy.scrollTo("bottom");
-
-//   //intercept
-//   cy.intercept("POST", "https://api.segment.io/v1/i").as("separatePost");
-
-//   cy.wait("@separatePost");
-// });
+    // Validate the request payload
+    expect(interception.request.body).to.have.property('userId');
+    expect(interception.request.body).to.have.property('event');
+    
+    // Validate the response
+    expect(interception.response.statusCode).to.equal(200);
+  });
+});
 
 //@allitems
 Then("I click on All Items", function () {
