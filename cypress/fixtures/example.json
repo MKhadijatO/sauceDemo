@@ -5,5 +5,10 @@
   "validUsermame": "standard_user",
   "validPassword": "secret_sauce",
   "invalidUsermame": "standard_name123",
-  "invalidPassword": "sauce-secret12"
+  "invalidPassword": "sauce-secret12",
+  "firstName": "Girl",
+  "lastName": "Shopper",
+  "postalCode": "100200",
+  "invalidFirstName": "12345",
+  "invalidLastName": "01Shopper" 
 }

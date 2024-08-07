@@ -32,7 +32,7 @@ Then("I select Login button", function () {
 
 Then("I validate successful login", function () {
   //Check the new page url
-    // cy.url().should("include", "/inventory.html");
+    cy.url().should("include", "/inventory.html");
 
   //Assert the new page has loaded by checking for the page title: Product
   cy.get(".product_label").should("contains.text", "Products");

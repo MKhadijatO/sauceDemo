@@ -7,9 +7,7 @@ beforeEach(function () {
   cy.fixture("example").then(function (data) {
     this.data = data;
   });
-
 });
-
 
 //@cartIcon01
 Given("I visit Saucedemo E-commerce website", function () {
@@ -26,67 +24,67 @@ When("I login into the website", function () {
   cy.get(".product_label").should("contains.text", "Products");
 });
 
-When ("I click the Cart icon", ()=> {
-    //validate that no figure is on the cart icon
-    cy.get(".shopping_cart_badge").should("not.exist"); // div[class='fa-layers-counter shopping_cart_badge']
+When("I click the Cart icon", () => {
+  //validate that no figure is on the cart icon
+  cy.get(".shopping_cart_badge").should("not.exist"); // div[class='fa-layers-counter shopping_cart_badge']
 
-    //selects the icon
-    cy.get(".shopping_cart_link").click();
+  //selects the icon
+  cy.get(".shopping_cart_link").click();
 });
 
-Then ("I validate an empty cart", ()=> {
-    cy.get(".cart_item").should("not.exist"); // div[class="cart_item"]
+Then("I validate an empty cart", () => {
+  cy.get(".cart_item").should("not.exist"); // div[class="cart_item"]
 });
 
-Then ("I click on the Continue Shopping button", ()=> {
-    cy.get("a[class='btn_secondary']").click();
+Then("I click on the Continue Shopping button", () => {
+  cy.get("a[class='btn_secondary']").click();
 
-    //Assert the the product list page opens
+  //Assert the the product list page opens
   cy.get(".product_label").should("contains.text", "Products");
 });
 
-
-
 //@addToCart
-When ("I add some items to cart", ()=> {
-    // cy.get("button[class='btn_primary btn_inventory']").click({ multiple: true });
- 
-    // cy.get("div.inventory_item #item_4_title_link").should("have.value", ".btn_primary btn_inventory").click();
-    // cy.get("button[class='btn_primary btn_inventory']").click();
-
-    // cy.get("div[id='div.inventory_item #item_4_title_link'][class='pricebarbtn_primary btn_inventory']").click();
-    cy.get('.inventory_item:first-of-type .pricebar .btn_primary'). click();
+When("I add some items to cart", () => {
+  cy.get(".inventory_item:first-of-type .pricebar .btn_primary").click();
+  cy.get('.inventory_item:nth-child(2) .pricebar .btn_primary').click();
+  cy.get(".inventory_item:nth-child(3) .pricebar .btn_primary").click();
+  cy.get(".inventory_item:nth-child(5) .pricebar .btn_primary").click();
 });
 
-Then ("I validate the number of items on the cart icon", ()=> {
-
+Then("I validate the number of items on the cart icon", () => {
+  cy.get(".fa-layers-counter").should("contain", "4");
 });
 
-Then ("I click on the cart icon and view all items in the cart", ()=> {
+Then("I click on the cart icon and view all items in the cart", () => {
+  cy.get(".shopping_cart_link").click();
 
+  //validate all items added to cart exists
+  cy.get(".inventory_item_name").should(
+    "be.visible"
+  );
+  
 });
-
 
 //@removingitems
-Then ("I click on the remove button on some items", ()=> {
-
+Then("I click on the remove button on some items", () => {
+  cy.get(".cart_item:nth-child(3) .cart_item_label .item_pricebar .btn_secondary").click();
+  cy.get(".cart_item:nth-child(5) .cart_item_label .item_pricebar .btn_secondary").click();
 });
 
-Then ("I validate reduction of items on the cart", ()=> {
-
+Then("I validate reduction of items on the cart", () => {
+  cy.get(".fa-layers-counter").should("contain", "2");
 });
-
 
 //@goingback
-When ("I click on the Continue Shoping button", ()=> {
-
+When("I click on the Continue Shoping button", () => {
+  cy.wait(6000);
+  cy.get(".cart_footer .btn_secondary").should("contain.text", "Continue Shopping").click();
 });
 
-Then ("I select an item", ()=> {
-
+Then("I select an item", () => {
+  cy.get(".inventory_item:nth-child(4) .pricebar .btn_primary").click();
 });
 
-Then ("I validate the number of items on the cart icon increases", ()=> {
-
+Then("I validate the number of items on the cart icon increases", () => {
+  cy.get(".fa-layers-counter").should("contain", "5");
 });
-

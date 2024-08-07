@@ -64,4 +64,3 @@ Scenario: Validate login process with empty username and empty password
     Then I select Login button
     Then I validate unsuccessful login with empty credentials
 
-

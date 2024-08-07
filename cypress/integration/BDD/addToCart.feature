@@ -34,6 +34,7 @@ Scenario: Validating Going back to Product Page while on the Add to Cart Page
     When I login into the website
     When I add some items to cart
     Then I validate the number of items on the cart icon
+    Then I click on the cart icon and view all items in the cart
     When I click on the Continue Shoping button
     Then I select an item
     Then I validate the number of items on the cart icon increases
