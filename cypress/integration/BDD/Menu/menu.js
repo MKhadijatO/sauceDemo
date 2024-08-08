@@ -69,29 +69,4 @@ Then("I click on About", function () {
   // cy.get("h1").should("contain.text", "Sauce Labs");
 });
 
-Then("I validate the About", function () {
-    // const url = "saucelabs.com"
-    cy.get(".MuiStack-root css-1o79f0j").should("be.visible");
-  // cy.url().should("eq", "saucelabs.com");
-  // // cy.scrollTo("bottom");
 
-  // cy.intercept("POST", "**/collect").as("clarityCollect");
-  // cy.wait("@clarityCollect");
-
-  // // cy.intercept('GET', '**/unnecessary-resource', { statusCode: 200, body: '' });
-
-  // //intercept
-  // cy.intercept("POST", "https://api.segment.io/v1/i").as("separatePost");
-
-  // cy.wait("@separatePost").then((interception) => {
-  //   // Log the interception object for debugging
-  //   console.log(interception);
-
-  //   // Validate the request payload
-  //   expect(interception.request.body).to.have.property("userId");
-  //   expect(interception.request.body).to.have.property("event");
-
-  //   // Validate the response
-  //   expect(interception.response.statusCode).to.equal(200);
-  // });
-});
