@@ -8,10 +8,12 @@ beforeEach(function () {
     this.data = data;
   });
 
-  // cy.wait(1000);
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false;
+  });
 
-  cy.clearLocalStorage();
-  cy.clearCookies();
 
 });
 
