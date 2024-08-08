@@ -20,6 +20,7 @@ return config;
 }
 
 module.exports = defineConfig({
+  projectId: 'xhsioy',
 e2e: {
 setupNodeEvents,
 pageLoadTimeout: 120000,
