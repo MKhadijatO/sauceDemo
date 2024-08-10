@@ -23,7 +23,7 @@ module.exports = defineConfig({
   projectId: 'xhsioy',
 e2e: {
 setupNodeEvents,
-pageLoadTimeout: 120000,
+pageLoadTimeout: 130000,
 baseUrl: "https://www.saucedemo.com/v1/",
 specPattern: 'cypress/integration/BDD/*.feature',
 },

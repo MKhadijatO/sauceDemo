@@ -9,7 +9,7 @@ beforeEach(function () {
 });
 
 Given("I visit Saucedemo E-commerce website", function () {
-  cy.visit("https://www.saucedemo.com");
+  cy.visit("https://www.saucedemo.com/v1");
 });
 
 When("I login into the website", function () {
