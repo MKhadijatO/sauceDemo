@@ -15,6 +15,7 @@ beforeEach(function () {
   });
 });
 
+
 //@closebutton
 Given("I visit Saucedemo E-commerce website", function () {
   cy.visit("https://www.saucedemo.com/v1");
@@ -43,6 +44,7 @@ Then("I validate the menu list closes", function () {
   cy.get(".bm-cross-button").should("not.be.visible");
 });
 
+
 //@allitems
 Then("I click on All Items", function () {
   cy.get("#inventory_sidebar_link").click();
@@ -55,21 +57,31 @@ Then("I validate the Products Page", function () {
   //cy.get(".product_label").should("contains.text", "Products");
 });
 
-//@about
-Then("I click on About", function () {
-  //opens the about page
-  cy.get("#about_sidebar_link").click({ timeout: 10000 });
 
-  // cy.wait(20000);
+//@about
+Then("I click on About and validate the page opens", function () {
+  //Opens the about page
+  cy.get("#about_sidebar_link").click({ timeout: 10000 });
   
+
+  //Validates the page opens
   cy.origin('https://saucelabs.com', () => {
     cy.get(".MuiBox-root .css-mntjpt").should("be.visible");
   });
   
-  // cy.wait(30000);
 });
+
 
 //@resetApp
 Then("I click on Reset App", function () {
   cy.get("#reset_sidebar_link").click();
+});
+
+Then("I validate the Products Page and the menu bar closes", function () {
+  cy.url().should("include", "/inventory.html");
+  cy.get(".inventory_list").should("be.visible");
+  //cy.get(".product_label").should("contains.text", "Products");
+
+  //Menubar closes
+  // cy.get("button").contains("Close Menu").should("not.be.visible");
 });

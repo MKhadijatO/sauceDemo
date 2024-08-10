@@ -1,12 +1,20 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
+beforeEach(function () {
+  cy.fixture("example").then(function (data) {
+    this.data = data;
+  });
+
+  
+});
+
 Given("I visit Saucedemo E-commerce website", function () {
   cy.visit("https://www.saucedemo.com");
 });
 
 When("I login into the website", function () {
-  cy.get("#user-name").type("standard_user");
-  cy.get("#password").type("secret_sauce");
+  cy.get("#user-name").type(this.data.validUsermame);
+  cy.get("#password").type(this.data.validPassword);
   cy.get("#login-button").click();
 });
 
