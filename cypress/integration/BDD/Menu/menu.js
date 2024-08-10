@@ -49,15 +49,10 @@ Then("I click on All Items", function () {
 });
 
 Then("I validate the Products Page", function () {
-  //   cy.get(".product_label").should("contains.text", "Products");
-  //OR
   cy.url().should("include", "/inventory.html");
   cy.get(".inventory_list").should("be.visible");
-});
 
-//@resetApp
-Then("I click on Reset App", function () {
-  cy.get("#reset_sidebar_link").click();
+  //cy.get(".product_label").should("contains.text", "Products");
 });
 
 //@about
@@ -65,8 +60,16 @@ Then("I click on About", function () {
   //opens the about page
   cy.get("#about_sidebar_link").click({ timeout: 10000 });
 
-  // cy.url().should('include', 'https://saucelabs.com');
-  // cy.get("h1").should("contain.text", "Sauce Labs");
+  // cy.wait(20000);
+  
+  cy.origin('https://saucelabs.com', () => {
+    cy.get(".MuiBox-root .css-mntjpt").should("be.visible");
+  });
+  
+  // cy.wait(30000);
 });
 
-
+//@resetApp
+Then("I click on Reset App", function () {
+  cy.get("#reset_sidebar_link").click();
+});

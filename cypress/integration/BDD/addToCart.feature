@@ -10,8 +10,16 @@ Scenario: Validating an empty cart
     Then I validate an empty cart
     Then I click on the Continue Shopping button
 
-@addToCart
-Scenario: Validating Add to Cart Process
+@addToCart01
+Scenario: Validating Adding a single item to Cart Process
+    Given I visit Saucedemo E-commerce website
+    When I login into the website
+    When I add an item to cart
+    Then I validate the number of items on the cart
+    Then I click on the cart icon and view all items in the cart
+    
+@addToCart02
+Scenario: Validating Adding multiple item to Cart Process
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I add some items to cart

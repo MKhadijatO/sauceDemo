@@ -43,7 +43,17 @@ Then("I click on the Continue Shopping button", () => {
   cy.get(".product_label").should("contains.text", "Products");
 });
 
-//@addToCart
+
+//@addToCart01
+When ("I add an item to cart", function () {
+  cy.get(".inventory_item:first-of-type .pricebar .btn_primary").click();
+})
+
+Then ("I validate the number of items on the cart", function () {
+  cy.get(".fa-layers-counter").should("contain", "1");
+})
+
+//@addToCart02
 When("I add some items to cart", () => {
   cy.get(".inventory_item:first-of-type .pricebar .btn_primary").click();
   cy.get('.inventory_item:nth-child(2) .pricebar .btn_primary').click();
