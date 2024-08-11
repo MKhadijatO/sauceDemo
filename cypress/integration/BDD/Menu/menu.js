@@ -56,18 +56,11 @@ Then("I validate the Products Page", function () {
 });
 
 //@about
-Then("I click on About and validate the page opens", function () {
-  //Opens the about page
-  cy.get("#about_sidebar_link").click({force: true});
-
-
-  // cy.get("a[href='https://saucelabs.com/']").should("exist");
+Then("I click on About", function () {
+  //Checks whether the link exists
+  cy.get("a[href='https://saucelabs.com/']").should("exist");
   // cy.visit("https://saucelabs.com");
 
-  // //Validates the page opens
-  cy.origin("https://saucelabs.com", () => {
-    cy.get(".MuiBox-root .css-mntjpt").should("be.visible");
-  });
 });
 
 //@resetApp

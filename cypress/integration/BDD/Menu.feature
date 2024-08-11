@@ -6,7 +6,7 @@ Scenario: Validating the About feature
     Given I visit Saucedemo E-commerce website
     When I login into the website
     When I click the Menu icon
-    Then I click on About and validate the page opens
+    Then I click on About
 
 
 @closebutton

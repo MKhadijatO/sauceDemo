@@ -1,14 +1,3 @@
-// const { defineConfig } = require("cypress");
-
-// module.exports = defineConfig({
-//   e2e: {
-//     setupNodeEvents(on, config) {
-//       // implement node event listeners here
-//     },
-//   },
-// });
-
-
 const { defineConfig } = require("cypress");
 const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
 const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
@@ -23,7 +12,7 @@ module.exports = defineConfig({
   projectId: 'xhsioy',
 e2e: {
 setupNodeEvents,
-pageLoadTimeout: 130000,
+// pageLoadTimeout: 130000,
 baseUrl: "https://www.saucedemo.com/v1/",
 specPattern: 'cypress/integration/BDD/*.feature',
 },

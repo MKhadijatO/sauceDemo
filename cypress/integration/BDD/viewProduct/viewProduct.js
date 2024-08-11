@@ -72,7 +72,7 @@ Then("I validate the product opens and Add to cart button", function () {
 
 //@ViewProductDetailsw/img
 When("I click on the product image", function () {
-  cy.get("#item_4_img_link").should("be.visible").click();
+  cy.get("#item_4_img_link").should("be.visible").click({force: true});
 });
 
 Then("I click on the Remove button", function () {

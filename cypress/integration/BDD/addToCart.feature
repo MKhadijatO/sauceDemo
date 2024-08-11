@@ -17,6 +17,7 @@ Scenario: Validating Adding a single item to Cart Process
     When I add an item to cart
     Then I validate the number of items on the cart
     Then I click on the cart icon and view all items in the cart
+    Then I check the no of items in the cart
     
 @addToCart02
 Scenario: Validating Adding multiple item to Cart Process
@@ -25,6 +26,7 @@ Scenario: Validating Adding multiple item to Cart Process
     When I add some items to cart
     Then I validate the number of items on the cart icon
     Then I click on the cart icon and view all items in the cart
+    Then I check the total number of items in the cart
 
 @removingitems
 Scenario: Validating the Removing items from Cart
@@ -47,4 +49,5 @@ Scenario: Validating Going back to Product Page while on the Add to Cart Page
     Then I select an item
     Then I validate the number of items on the cart icon increases
     Then I click on the cart icon and view all items in the cart
+    Then I check total number of items in the cart
     
