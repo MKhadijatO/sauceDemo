@@ -90,13 +90,13 @@ Then("I validate an empty cart", () => {
 Then("I click on the Continue Shopping button", () => {
   cy.get("a[class='btn_secondary']").click();
 
-  //Assert the the product list page opens
+  //Asserts that the product list page opens
   cy.get(".product_label").should("contains.text", "Products");
 });
 
 //@checkoutProcess02
 Then("I leave empty the Your Information form", () => {
-  // Ensure fields are empty
+  // This ensure fields are empty
   cy.get("#first-name").clear();
   cy.get("#last-name").clear();
   cy.get("#postal-code").clear();
@@ -107,7 +107,7 @@ Then("I select the Continue button", () => {
 });
 
 Then("I validate unsuccessful submission", () => {
-  // Assuming there's an error message element that appears on unsuccessful submission
+  // an error message element appears on unsuccessful submission
   cy.get("[data-test='error']").should("be.visible");
   cy.get("[data-test='error']").should(
     "contain",
@@ -123,7 +123,7 @@ Then("I fill the Your Information form with incomplete details", function () {
 });
 
 Then("I validate unsuccessful checkout", () => {
-  // Assuming there's an error message element that appears on unsuccessful submission
+  // an error message element appears on unsuccessful submission
   cy.get("[data-test='error']").should("be.visible");
   cy.get("[data-test='error']").should(
     "contain",
