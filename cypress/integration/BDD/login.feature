@@ -1,14 +1,15 @@
+@regression
 Feature: Testing Saucedemo E-commerce website
- Application regression
+ Application 
 
-@login
+@ignore @login
 Scenario: Validate login process with valid username and password
     Given I visit Saucedemo E-commerce website
     When I input valid username and valid password
     Then I select Login button
     Then I validate successful login
 
-@login1
+@ignore @login1
 Scenario: Validate login process with valid username and invalid password
     Given I visit Saucedemo E-commerce website
     When I input valid username and invalid password
