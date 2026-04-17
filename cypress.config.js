@@ -12,8 +12,8 @@ module.exports = defineConfig({
   projectId: "xhsioy",
   e2e: {
     setupNodeEvents,
-    // pageLoadTimeout: 130000,
-    baseUrl: "https://www.saucedemo.com/v1/",
+    pageLoadTimeout: 200000,
+    baseUrl: "https://www.saucedemo.com",
     specPattern: "cypress/integration/BDD/*.feature",
     env: {
       TAGS: "not @ignore",

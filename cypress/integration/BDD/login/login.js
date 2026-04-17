@@ -17,7 +17,7 @@ beforeEach(function () {
 
 Given("I visit Saucedemo E-commerce website", function () {
   //Load the website
-  cy.visit("https://www.saucedemo.com");
+  cy.visit("https://www.saucedemo.com",  { timeout: 10000 });
 });
 
 //Positive Scenerio

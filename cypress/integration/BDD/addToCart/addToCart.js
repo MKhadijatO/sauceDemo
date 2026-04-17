@@ -11,7 +11,7 @@ beforeEach(function () {
 
 //@cartIcon01
 Given("I visit Saucedemo E-commerce website", function () {
-  cy.visit("https://www.saucedemo.com");
+  cy.visit("https://www.saucedemo.com",  { timeout: 10000 });
 });
 
 When("I login into the website", function () {
