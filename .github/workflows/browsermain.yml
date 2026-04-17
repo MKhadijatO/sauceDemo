@@ -1,61 +1,43 @@
-name: Cypress tests
+name: Cypress Tests with Dependency and Artifact Caching
 
-on: [push]
+on: push
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        browser: [chrome, firefox, edge]
-
+  install:
+    runs-on: ubuntu-24.04
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20.13.1'
-    
-    - name: Install project dependencies
-      run: npm install
-      
-    - name: Install Cypress
-      run: npm install cypress
-      
-    - name: Install browser dependencies
-      run: |
-        if [ "${{ matrix.browser }}" == "firefox" ]; then
-          sudo apt-get update
-          sudo apt-get install -y firefox
-        elif [ "${{ matrix.browser }}" == "edge" ]; then
-          sudo apt-get install -y wget
-          wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-          sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
-          sudo apt-get update
-          sudo apt-get install -y microsoft-edge-stable
-        fi
-    - name: Verify browser installation
-      run: |
-        if [ "${{ matrix.browser }}" == "firefox" ]; then
-          which firefox
-          firefox --version
-        elif [ "${{ matrix.browser }}" == "edge" ]; then
-          which microsoft-edge
-          microsoft-edge --version
-        elif [ "${{ matrix.browser }}" == "chrome" ]; then
-          which google-chrome
-          google-chrome --version
-        fi
-    - name: Run Cypress tests
-      env:
-        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      run: |
-        if [ "${{ matrix.browser }}" == "firefox" ]; then
-          npx cypress run --browser firefox --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }}
-        elif [ "${{ matrix.browser }}" == "chrome" ]; then
-          npx cypress run --browser chrome --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }}
-        elif [ "${{ matrix.browser }}" == "edge" ]; then
-          npx cypress run --browser edge --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }}
-          fi
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v7
+        with:
+          # Disable running of tests within install job
+          runTests: false
+          build: npm run build
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v6
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
+  cypress-run:
+    runs-on: ubuntu-24.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Download the build folder
+        uses: actions/download-artifact@v7
+        with:
+          name: build
+          path: build
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v7
+        with:
+          start: npm start
+          browser: chrome
