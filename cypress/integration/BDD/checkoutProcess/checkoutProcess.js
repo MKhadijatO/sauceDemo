@@ -11,7 +11,7 @@ beforeEach(function () {
 
 //@checkoutProcess
 Given("I visit Saucedemo E-commerce website", function() {
-  cy.visit("https://www.saucedemo.com/");
+  cy.visit("https://www.saucedemo.com");
 });
 
 When("I login into the website", function () {
