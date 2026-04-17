@@ -13,7 +13,7 @@ Scenario: Validating Checkout Process
     Then I click on the Continue button
     When I preview the order list
     Then I click on the Finish button
-    Then I validate successful completion of order "THANK YOU FOR YOUR ORDER"
+    Then I validate successful completion of order "Thank you for your order!"
     Then I click on the Menu button and All items
 
 @emptyCart
@@ -67,5 +67,5 @@ Scenario: Validating the Remove and Cancel buttons on the Add to Cart Process
     Then I click on the Continue button
     When I preview the order list and validate quantity and price
     Then I click on the Finish button
-    Then I validate successful completion of order "THANK YOU FOR YOUR ORDER"
+    Then I validate successful completion of order "Thank you for your order!"
     Then I click on the Menu button and All items

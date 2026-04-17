@@ -13,7 +13,7 @@ beforeEach(function () {
 
 //@ViewProductDetails
 Given("I visit Saucedemo E-commerce website", function () {
-  cy.visit("https://www.saucedemo.com/v1");
+  cy.visit("https://www.saucedemo.com");
 });
 
 When("I login into the website", function () {
@@ -23,7 +23,7 @@ When("I login into the website", function () {
   cy.get("#login-button").click();
 
   //Assert the new page has loaded by checking for the page title: Product
-  cy.get(".product_label").should("contains.text", "Products");
+  cy.get("span.title").should("contains.text", "Products");
 });
 
 When("I validate the entire Products Page", function () {
@@ -64,7 +64,7 @@ Then("I validate the product opens and Add to cart button", function () {
   );
 
   //Add to cart button
-  cy.get("button[class='btn_primary btn_inventory']").click();
+  cy.get("#add-to-cart").click();
   // cy.get("button[class='btn_primary btn_inventory']").click({ force:true }); //can also be used
 });
 
@@ -77,13 +77,13 @@ When("I click on the product image", function () {
 
 Then("I click on the Remove button", function () {
   //validate product has been added to cart
-  cy.get("button[class='btn_secondary btn_inventory']").should("contains.text", "REMOVE");
+  cy.get("#remove").should("contains.text", "Remove");
 });
 
 When("I select the Back to products button", function () {
   //select Go Back button
-  cy.get("button[class='inventory_details_back_button']").click({force:true});
+  cy.get("#back-to-products").click({force:true});
 
   //Assert the the product list page opens
-  cy.get(".product_label").should("contains.text", "Products");
+  cy.get("span.title").should("contains.text", "Products");
 });

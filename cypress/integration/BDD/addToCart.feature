@@ -2,7 +2,7 @@ Feature: Testing Saucedemo E-commerce website
  Application regression
 
 
-@focus @cartIcon01
+@cartIcon01
 Scenario: Validating an empty cart
     Given I visit Saucedemo E-commerce website
     When I login into the website
@@ -19,7 +19,7 @@ Scenario: Validating Adding a single item to Cart Process
     Then I click on the cart icon and view all items in the cart
     Then I check the no of items in the cart
     
-@focus @addToCart02
+@addToCart02
 Scenario: Validating Adding multiple item to Cart Process
     Given I visit Saucedemo E-commerce website
     When I login into the website
@@ -38,7 +38,7 @@ Scenario: Validating the Removing items from Cart
     Then I click on the remove button on some items
     Then I validate reduction of items on the cart
 
-@focus @goingback
+@goingback
 Scenario: Validating Going back to Product Page while on the Add to Cart Page
     Given I visit Saucedemo E-commerce website
     When I login into the website

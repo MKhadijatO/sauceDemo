@@ -17,7 +17,7 @@ beforeEach(function () {
 
 //@closebutton
 Given("I visit Saucedemo E-commerce website", function () {
-  cy.visit("https://www.saucedemo.com/v1/");
+  cy.visit("https://www.saucedemo.com");
 });
 
 When("I login into the website", function () {
@@ -27,7 +27,7 @@ When("I login into the website", function () {
   cy.get("#login-button").click();
 
   //Assert the new page has loaded by checking for the page title: Product
-  cy.get(".product_label").should("contains.text", "Products");
+  cy.get("span.title").should("contains.text", "Products");
 });
 
 When("I click the Menu icon", function () {

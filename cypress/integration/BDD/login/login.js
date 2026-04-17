@@ -17,9 +17,11 @@ beforeEach(function () {
 
 Given("I visit Saucedemo E-commerce website", function () {
   //Load the website
-  cy.visit("https://www.saucedemo.com/v1/");
+  cy.visit("https://www.saucedemo.com");
 });
 
+//Positive Scenerio
+//@login
 When("I input valid username and valid password", function () {
   //Fill the correct login details
   cy.get("#user-name").type(this.data.validUsermame);
@@ -35,7 +37,7 @@ Then("I validate successful login", function () {
     cy.url().should("include", "/inventory.html");
 
   //Assert the new page has loaded by checking for the page title: Product
-  cy.get(".product_label").should("contains.text", "Products");
+  cy.get("span.title").should("contains.text", "Products");
 });
 
 //NEGATIVE SCENERIOS

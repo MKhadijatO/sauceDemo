@@ -11,7 +11,7 @@ beforeEach(function () {
 
 //@checkoutProcess
 Given("I visit Saucedemo E-commerce website", function() {
-  cy.visit("https://www.saucedemo.com/v1");
+  cy.visit("https://www.saucedemo.com/");
 });
 
 When("I login into the website", function () {
@@ -30,7 +30,7 @@ When("I add some items to cart", function () {
 });
 
 Then("I validate the number of items on the cart icon", () => {
-  cy.get(".fa-layers-counter").should("contain", "3"); // Assuming you added 3 items
+  cy.get(".shopping_cart_badge").should("contain", "3"); // Assuming you added 3 items
 });
 
 Then("I click on the cart icon and view all items in the cart", () => {
@@ -88,10 +88,10 @@ Then("I validate an empty cart", () => {
 });
 
 Then("I click on the Continue Shopping button", () => {
-  cy.get("a[class='btn_secondary']").click();
+  cy.get("#continue-shopping").click();
 
   //Asserts that the product list page opens
-  cy.get(".product_label").should("contains.text", "Products");
+  cy.get("span.title").should("contains.text", "Products");
 });
 
 //@checkoutProcess02

@@ -11,7 +11,7 @@ beforeEach(function () {
 
 //@cartIcon01
 Given("I visit Saucedemo E-commerce website", function () {
-  cy.visit("https://www.saucedemo.com/v1");
+  cy.visit("https://www.saucedemo.com");
 });
 
 When("I login into the website", function () {
@@ -21,7 +21,7 @@ When("I login into the website", function () {
   cy.get("#login-button").click();
 
   //Assert the new page has loaded by checking for the page title: Product
-  cy.get(".product_label").should("contains.text", "Products");
+  cy.get("span.title").should("contains.text", "Products");
 });
 
 When("I click the Cart icon", () => {
@@ -37,10 +37,10 @@ Then("I validate an empty cart", () => {
 });
 
 Then("I click on the Continue Shopping button", () => {
-  cy.get("a[class='btn_secondary']").click();
+  cy.get("#continue-shopping").click();
 
   //Assert the the product list page opens
-  cy.get(".product_label").should("contains.text", "Products");
+  cy.get("span.title").should("contains.text", "Products");
 });
 
 //@addToCart01
@@ -49,7 +49,7 @@ When("I add an item to cart", function () {
 });
 
 Then("I validate the number of items on the cart", function () {
-  cy.get(".fa-layers-counter").should("contain", "1");
+  cy.get(".shopping_cart_badge").should("contain", "1");
 });
 
 Then("I check the no of items in the cart", function () {
@@ -65,7 +65,7 @@ When("I add some items to cart", () => {
 });
 
 Then("I validate the number of items on the cart icon", () => {
-  cy.get(".fa-layers-counter").should("contain", "4");
+  cy.get(".shopping_cart_badge").should("contain", "4");
 });
 
 Then("I click on the cart icon and view all items in the cart", () => {
@@ -90,7 +90,7 @@ Then("I click on the remove button on some items", () => {
 });
 
 Then("I validate reduction of items on the cart", () => {
-  cy.get(".fa-layers-counter").should("contain", "2");
+  cy.get(".shopping_cart_badge").should("contain", "2");
   cy.get(".cart_item").should("have.length", 2);
 });
 
@@ -107,7 +107,7 @@ Then("I select an item", () => {
 });
 
 Then("I validate the number of items on the cart icon increases", () => {
-  cy.get(".fa-layers-counter").should("contain", "5");
+  cy.get(".shopping_cart_badge").should("contain", "5");
 });
 
 Then("I check total number of items in the cart", function () {
