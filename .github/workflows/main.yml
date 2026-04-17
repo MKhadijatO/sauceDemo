@@ -1,27 +1,25 @@
-name: Cypress Tests
+name: Cypress tests
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.13.1'
+
+      - name: Install project dependencies
         run: npm install
 
-      - name: Start application
-        run: npm start &
-      
-      - name: Wait for app to load
-        run: npx wait-on http://localhost:3000
+      - name: Install Cypress
+        run: npm install cypress --save-dev
 
       - name: Run Cypress tests
         run: npx cypress run
